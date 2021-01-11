@@ -10,6 +10,7 @@ public class Jump : MonoBehaviour
     public Vector3 jump;
     public float jumpForce = 2.0f;
     private bool isLeft = true;
+    private bool canUp = false;
 
     public bool isGrounded;
     Rigidbody rb;
@@ -26,11 +27,30 @@ public class Jump : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
-
-            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+        }
+
+
+        if (canUp)
+        {
+            rb.useGravity = false;
+
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                transform.position += new Vector3(0, 0.1f, 0);
+            }
+
+            if (isScalingLeft)
+            {
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    rb.useGravity = true;
+                    canUp = false;
+                    isScalingLeft = false;
+                }
+            }
         }
     }
 
@@ -53,6 +73,7 @@ public class Jump : MonoBehaviour
                 {
                     isScalingLeft = false;
                 }
+      
             }
 
             if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
@@ -71,18 +92,14 @@ public class Jump : MonoBehaviour
                 isScalingLeft = false;
             }
 
-
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                transform.position += new Vector3(0, 0.1f, 0);
-            }
-
             isScalingLeft = true;
+            canUp = true;
         }
         else
         {
-            isScalingLeft = false;
+            
             isScalingRight = false;
+            
         }
     }
 }

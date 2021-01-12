@@ -12,9 +12,6 @@ public class Jump : MonoBehaviour
     private bool isLeft = true;
     private bool canUp = false;
     public static bool isHammerTaken = false;
-    public static float playerXAxis = 0;
-    public static float playerYAxis = 0;
-    public static float playerZAxis = 0;
 
     public bool isGrounded;
     Rigidbody rb;
@@ -31,10 +28,6 @@ public class Jump : MonoBehaviour
 
     void Update()
     {
-
-        playerXAxis = transform.localPosition.x;
-        playerYAxis = transform.position.y;
-        playerZAxis = transform.localPosition.z;
 
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {

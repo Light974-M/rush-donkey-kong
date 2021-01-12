@@ -7,13 +7,14 @@ public class HammerControler : MonoBehaviour
     private bool isHammerTaken = false;
 
     public Transform hammer;
-    public Transform mario;
+    public Transform marioCapsule;
     private float marioXAxis = 0;
     private float marioYAxis = 0;
     private float marioZAxis = 0;
     private int timer = 1;
     private int timerStack = 0;
     public ParticleSystem dust;
+    private bool setHammerPos = true;
 
     void Start()
     {
@@ -23,23 +24,27 @@ public class HammerControler : MonoBehaviour
 
     void Update()
     {
-        marioXAxis = Jump.playerXAxis;
-        marioYAxis = Jump.playerYAxis;
-        marioZAxis = Jump.playerZAxis;
+        marioXAxis = MarioCapsuleController.playerXAxis;
+        marioYAxis = MarioCapsuleController.playerYAxis;
+        marioZAxis = MarioCapsuleController.playerZAxis;
 
         isHammerTaken = Jump.isHammerTaken;
 
         if(isHammerTaken)
         {
             Destroy(GetComponent<Collider>());
-            hammer.transform.SetParent(mario.transform.parent);
-            transform.localPosition = new Vector3(marioXAxis -0.2f, marioYAxis + 2.5f, marioZAxis);
+            hammer.transform.SetParent(marioCapsule.transform.parent);
 
-            if(timerStack < 20)
+            if(setHammerPos)
+            {
+                transform.localPosition = new Vector3(marioXAxis, marioYAxis - 3f, marioZAxis);
+                setHammerPos = false;
+            }
+            
+            if (timerStack < 44)
             {
                 if(timer > 0 && timer <15)
                 {
-                    dust.Stop();
                     transform.eulerAngles = new Vector3(-45, transform.eulerAngles.y, transform.eulerAngles.z);
                     timer += 1;
                 }
@@ -59,6 +64,11 @@ public class HammerControler : MonoBehaviour
                 if(timer == -15)
                 {
                     timer = 1;
+                    timerStack += 1;
+                }
+                if (timer == -7)
+                {
+                    dust.Stop();
                 }
             }
         }

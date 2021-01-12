@@ -11,6 +11,10 @@ public class Jump : MonoBehaviour
     public float jumpForce = 2.0f;
     private bool isLeft = true;
     private bool canUp = false;
+    public static bool isHammerTaken = false;
+    public static float playerXAxis = 0;
+    public static float playerYAxis = 0;
+    public static float playerZAxis = 0;
 
     public bool isGrounded;
     Rigidbody rb;
@@ -27,6 +31,11 @@ public class Jump : MonoBehaviour
 
     void Update()
     {
+
+        playerXAxis = transform.localPosition.x;
+        playerYAxis = transform.position.y;
+        playerZAxis = transform.localPosition.z;
+
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             isGrounded = false;
@@ -39,13 +48,24 @@ public class Jump : MonoBehaviour
 
             if (Input.GetKey(KeyCode.UpArrow))
             {
+                GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
                 transform.position += new Vector3(0, 0.1f, 0);
             }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
+                transform.position += new Vector3(0, -0.1f, 0);
+            }
 
+            if (!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.UpArrow))
+            {
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+            }
             if (isScalingLeft)
             {
                 if (Input.GetKey(KeyCode.RightArrow))
                 {
+                    GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
                     rb.useGravity = true;
                     canUp = false;
                     isScalingLeft = false;
@@ -100,6 +120,11 @@ public class Jump : MonoBehaviour
             
             isScalingRight = false;
             
+        }
+
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Marteau"))
+        {
+            isHammerTaken = true;
         }
     }
 }

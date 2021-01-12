@@ -6,7 +6,6 @@ public class MarioCapsuleController : MonoBehaviour
 {
 
 
-
     void Start()
     {
         
@@ -14,6 +13,9 @@ public class MarioCapsuleController : MonoBehaviour
 
     void Update()
     {
-        
+        /*if(Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+
+        }*/
     }
 }

@@ -8,6 +8,8 @@ public class TonneauBehaviour : MonoBehaviour
 
     public Transform Spawn;
     public GameObject TonneauGravity;
+    private bool isHammerTakenOrigin = false;
+    private static bool isHammerTaken = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,9 @@ public class TonneauBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isHammerTakenOrigin = Jump.isHammerTaken;
+        isHammerTaken = isHammerTakenOrigin;
+
         time -= Time.deltaTime;
 
         if (time <= 0.0f)
@@ -28,4 +33,17 @@ public class TonneauBehaviour : MonoBehaviour
             GameObject.Destroy(gameObject);
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Mario") || collision.collider.gameObject.layer == LayerMask.NameToLayer("Marteau"))
+        {
+            if (isHammerTaken)
+            {
+                GameObject.Destroy(gameObject);
+            }
+        }
+    }
+
+
 }

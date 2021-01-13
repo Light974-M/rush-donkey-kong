@@ -6,9 +6,7 @@ public class CameraControls : MonoBehaviour
 {
     public Vector3 rotateSpeed = new Vector3(0, 1, 0);
     public Vector3 minusRotateSpeed = new Vector3(0, -1, 0);
-    private bool isScalingLeft = false;
-    private bool isScalingRight = false;
-
+    private bool canUp = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,26 +19,20 @@ public class CameraControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isScalingLeft = Jump.isScalingLeft;
-        isScalingRight = Jump.isScalingRight;
+        canUp = Jump.canUp;
 
-        if (!isScalingLeft)
+        if (!canUp)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.Rotate(minusRotateSpeed);
             }
-        }
 
-        if(!isScalingRight)
-        {
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 transform.Rotate(rotateSpeed);
             }
         }
-        
-
     }
 
 }

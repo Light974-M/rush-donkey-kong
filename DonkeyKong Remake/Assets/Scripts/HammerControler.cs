@@ -15,6 +15,7 @@ public class HammerControler : MonoBehaviour
     private int timerStack = 0;
     public ParticleSystem dust;
     private bool setHammerPos = true;
+    public GameObject Hammer;
 
     void Start()
     {
@@ -30,38 +31,38 @@ public class HammerControler : MonoBehaviour
 
         isHammerTaken = Jump.isHammerTaken;
 
-        if(isHammerTaken)
+        if (isHammerTaken)
         {
             Destroy(GetComponent<Collider>());
             hammer.transform.SetParent(marioCapsule.transform.parent);
 
-            if(setHammerPos)
+            if (setHammerPos)
             {
                 transform.localPosition = new Vector3(marioXAxis, marioYAxis - 3f, marioZAxis);
                 setHammerPos = false;
             }
-            
+
             if (timerStack < 44)
             {
-                if(timer > 0 && timer <15)
+                if (timer > 0 && timer < 15)
                 {
                     transform.eulerAngles = new Vector3(-45, transform.eulerAngles.y, transform.eulerAngles.z);
                     timer += 1;
                 }
-                if(timer == 15)
+                if (timer == 15)
                 {
                     timer = 0;
                 }
-                if(timer <=0 && timer > -15)
+                if (timer <= 0 && timer > -15)
                 {
-                    if(timer == 0)
+                    if (timer == 0)
                     {
                         dust.Play();
                     }
                     transform.eulerAngles = new Vector3(45, transform.eulerAngles.y, transform.eulerAngles.z);
                     timer -= 1;
                 }
-                if(timer == -15)
+                if (timer == -15)
                 {
                     timer = 1;
                     timerStack += 1;
@@ -70,6 +71,10 @@ public class HammerControler : MonoBehaviour
                 {
                     dust.Stop();
                 }
+            }
+            else
+            {
+                Destroy(Hammer);
             }
         }
     }

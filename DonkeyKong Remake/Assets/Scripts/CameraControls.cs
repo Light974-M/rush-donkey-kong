@@ -23,14 +23,20 @@ public class CameraControls : MonoBehaviour
 
         if (!canUp)
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if(!Jump.barriereGauche)
             {
-                transform.Rotate(minusRotateSpeed);
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    transform.Rotate(minusRotateSpeed);
+                }
             }
 
-            if (Input.GetKey(KeyCode.RightArrow))
+            if(!Jump.barriereDroite)
             {
-                transform.Rotate(rotateSpeed);
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    transform.Rotate(rotateSpeed);
+                }
             }
         }
     }

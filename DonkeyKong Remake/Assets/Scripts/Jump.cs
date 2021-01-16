@@ -12,6 +12,8 @@ public class Jump : MonoBehaviour
     public static bool canPressUp = false;
     private bool returnToNormal = false;
     public static bool isTop = false;
+    public static bool barriereGauche = false;
+    public static bool barriereDroite = false;
 
     public bool isGrounded;
     Rigidbody rb;
@@ -102,6 +104,23 @@ public class Jump : MonoBehaviour
         {
             isHammerTaken = false;
         }
+
+
+        if(barriereGauche)
+        {
+            if(Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                barriereGauche = false;
+            }
+        }
+
+        if (barriereDroite)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                barriereDroite = false;
+            }
+        }
     }
 
 
@@ -144,6 +163,16 @@ public class Jump : MonoBehaviour
         {
             canPressUp = false;
             isTop = false;
+        }
+
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("BarriereGauche"))
+        {
+            barriereGauche = true;
+        }
+
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("BarriereDroite"))
+        {
+            barriereDroite = true;
         }
     }
 }

@@ -13,7 +13,7 @@ public class NoLadderController : MonoBehaviour
     {
         if(Jump.canPressUp)
         {
-            transform.localPosition = new Vector3(4.26f, 325.2f, -0.72f);
+            transform.localPosition = new Vector3(4.71f, 392.77f, 10.05f);
         }
         else
         {

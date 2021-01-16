@@ -16,6 +16,7 @@ public class HammerControler : MonoBehaviour
     public ParticleSystem dust;
     private bool setHammerPos = true;
     public GameObject Hammer;
+    public static bool returnToNormal = false;
 
     void Start()
     {
@@ -72,10 +73,15 @@ public class HammerControler : MonoBehaviour
                     dust.Stop();
                 }
             }
-            else
+            else if(timerStack >= 44)
             {
                 Destroy(Hammer);
+                returnToNormal = true;
             }
+        }
+        else
+        {
+            returnToNormal = false;
         }
     }
 }

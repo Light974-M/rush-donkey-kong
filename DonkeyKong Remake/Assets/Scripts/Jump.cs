@@ -9,6 +9,9 @@ public class Jump : MonoBehaviour
     public float jumpForce = 2.0f;
     public static bool canUp = false;
     public static bool isHammerTaken = false;
+    public static bool canPressUp = false;
+    private bool returnToNormal = false;
+    public static bool isTop = false;
 
     public bool isGrounded;
     Rigidbody rb;
@@ -40,6 +43,8 @@ public class Jump : MonoBehaviour
     void Update()
     {
 
+        returnToNormal = HammerControler.returnToNormal;
+
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             isGrounded = false;
@@ -52,19 +57,50 @@ public class Jump : MonoBehaviour
 
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
+                GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePosition;
                 transform.position += new Vector3(0, 0.1f, 0);
             }
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
+                GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePosition;
                 transform.position += new Vector3(0, -0.1f, 0);
             }
 
             if (!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))
             {
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
             }
+        }
+        else
+        {
+            rb.useGravity = true;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        }
+
+
+        if(canPressUp)
+        {
+            if(isTop)
+            {
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    canUp = true;
+                    //canPressUp = false;
+                }
+            }
+            else
+            {
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    canUp = true;
+                    //canPressUp = false;
+                }
+            }
+        }
+
+        if (returnToNormal)
+        {
+            isHammerTaken = false;
         }
     }
 
@@ -85,17 +121,29 @@ public class Jump : MonoBehaviour
             }
         }
 
-        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Echelle"))
-        {
-            if(!isHammerTaken)
-            {
-
-            }
-        }
-
         if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Marteau"))
         {
             isHammerTaken = true;
+        }
+
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Echelle"))
+        {
+            if (!isHammerTaken)
+            {
+                if(canUp)
+                {
+                    canUp = false;
+                }
+                else
+                {
+                    canPressUp = true;
+                }
+            }
+        }
+        else if (collision.collider.gameObject.layer == LayerMask.NameToLayer("NonEchelle"))
+        {
+            canPressUp = false;
+            isTop = false;
         }
     }
 }

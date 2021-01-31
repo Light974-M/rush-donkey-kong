@@ -10,6 +10,9 @@ public class TonneauBehaviour : MonoBehaviour
     public GameObject TonneauGravity;
     private bool isHammerTakenOrigin = false;
     private static bool isHammerTaken = false;
+    public static bool isSpawnFinish = false;
+
+    public Transform tonneauPivot;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +30,7 @@ public class TonneauBehaviour : MonoBehaviour
 
         if (time <= 0.0f)
         {
-           
+            isSpawnFinish = true;
             Vector3 position = new Vector3();
             Instantiate(TonneauGravity, Spawn.position, Quaternion.identity);
             GameObject.Destroy(gameObject);
@@ -39,6 +42,14 @@ public class TonneauBehaviour : MonoBehaviour
         if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Mario") || collision.collider.gameObject.layer == LayerMask.NameToLayer("Marteau"))
         {
             if (isHammerTaken)
+            {
+                GameObject.Destroy(gameObject);
+            }
+        }
+
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Mario"))
+        {
+            if (!isHammerTaken)
             {
                 GameObject.Destroy(gameObject);
             }

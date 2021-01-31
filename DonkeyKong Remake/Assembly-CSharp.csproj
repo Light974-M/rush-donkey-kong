@@ -66,8 +66,10 @@
      <Compile Include="Assets\Scripts\Jump.cs" />
      <Compile Include="Assets\Scripts\MarioCapsuleController.cs" />
      <Compile Include="Assets\Scripts\NoLadderController.cs" />
+     <Compile Include="Assets\Scripts\SetTonneauPivot.cs" />
      <Compile Include="Assets\Scripts\TargetDK.cs" />
      <Compile Include="Assets\Scripts\TonneauBehaviour.cs" />
+     <Compile Include="Assets\Scripts\TonneauController.cs" />
      <Compile Include="Assets\Scripts\TopLadderController.cs" />
      <Compile Include="Assets\Scripts\WallMo.cs" />
      <Compile Include="Assets\Trucs\ObstacleCoursePack\Controller\CameraManager.cs" />

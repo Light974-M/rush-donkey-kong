@@ -14,6 +14,9 @@ public class Jump : MonoBehaviour
     public static bool isTop = false;
     public static bool barriereGauche = false;
     public static bool barriereDroite = false;
+    public static bool deathAnimationStart = false;
+    public int timer = 0;
+    public static int life = 3;
 
     public bool isGrounded;
     Rigidbody rb;
@@ -21,6 +24,7 @@ public class Jump : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
     }
@@ -121,6 +125,31 @@ public class Jump : MonoBehaviour
                 barriereDroite = false;
             }
         }
+
+
+        if(deathAnimationStart)
+        {
+            Time.timeScale = 0;
+
+            if(timer <400)
+            {
+                Debug.Log("animation en cours");
+                timer += 1;
+            }
+            else
+            {
+                deathAnimationStart = false;
+                timer = 0;
+                if(life == 0)
+                {
+                    Debug.Log("game Over !");
+                }
+
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+
+            
+        }
     }
 
 
@@ -136,7 +165,9 @@ public class Jump : MonoBehaviour
         {
             if(!isHammerTaken)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                Debug.Log(life);
+                life -= 1;
+                deathAnimationStart = true;
             }
         }
 

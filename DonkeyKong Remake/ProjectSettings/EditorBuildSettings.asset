@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/noam/Menu.unity
+    guid: efbb90d57a3a0c64ba45caff5d7285c0
+  - enabled: 1
+    path: Assets/Scenes/noam/LD.unity
+    guid: 68c69e75ef1b8ca43b7209fab8f2e0c8
+  - enabled: 1
+    path: Assets/Scenes/noam/Win.unity
+    guid: 586f1ebce6b752f40b1920e34d2a5a79
+  - enabled: 1
+    path: Assets/Scenes/noam/Credits.unity
+    guid: 52812f810134ead4185c8c61952fb625
   m_configObjects: {}

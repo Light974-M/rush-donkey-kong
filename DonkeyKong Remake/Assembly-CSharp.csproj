@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BottomLadderController.cs" />
+    <Compile Include="Assets\Scripts\Buttons.cs" />
     <Compile Include="Assets\Scripts\CameraControls.cs" />
     <Compile Include="Assets\Scripts\CameraLock.cs" />
     <Compile Include="Assets\Scripts\CenterToCenter.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Assets\Scripts\DKlauncher.cs" />
     <Compile Include="Assets\Scripts\DonkeyKongController.cs" />
     <Compile Include="Assets\Scripts\HammerControler.cs" />
+    <Compile Include="Assets\Scripts\IfAnyKeyPressed.cs" />
     <Compile Include="Assets\Scripts\Jump.cs" />
     <Compile Include="Assets\Scripts\Jump1.cs" />
     <Compile Include="Assets\Scripts\MarioCapsuleController.cs" />

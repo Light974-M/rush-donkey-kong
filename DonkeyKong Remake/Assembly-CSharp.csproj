@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\DonkeyKongController.cs" />
     <Compile Include="Assets\Scripts\HammerControler.cs" />
     <Compile Include="Assets\Scripts\Jump.cs" />
+    <Compile Include="Assets\Scripts\Jump1.cs" />
     <Compile Include="Assets\Scripts\MarioCapsuleController.cs" />
     <Compile Include="Assets\Scripts\NoLadderController.cs" />
     <Compile Include="Assets\Scripts\SetTonneauPivot.cs" />

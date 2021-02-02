@@ -7313,6 +7313,7 @@ GameObject:
   - component: {fileID: 1905339363}
   - component: {fileID: 1905339362}
   - component: {fileID: 1905339361}
+  - component: {fileID: 1905339365}
   m_Layer: 8
   m_Name: Mario
   m_TagString: Untagged
@@ -7370,7 +7371,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905339359}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3ebbe56c46d6ef4a82e241eaae69c99, type: 3}
   m_Name: 
@@ -7395,6 +7396,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1905339365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905339359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e675a5fe0066314429f025bc2b16321f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: {x: 0, y: 0, z: 0}
+  jumpForce: 4
+  isGrounded: 0
 --- !u!1 &2007163239
 GameObject:
   m_ObjectHideFlags: 0

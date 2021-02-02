@@ -18,6 +18,8 @@ public class TonneauController : MonoBehaviour
 
     private bool isOnLadder = false;
 
+    private int randomLadder;
+
     void Start()
     {
         transform.position = new Vector3(0, 10, 0);
@@ -54,25 +56,27 @@ public class TonneauController : MonoBehaviour
             isGoingLeft = false;
         }
 
-        if(isOnLadder)
+        if(!Jump.deathAnimationStart)
         {
-            if(animationLadder == 0)
+            if (isOnLadder)
             {
-                transform.eulerAngles += new Vector3(0, 5, 0);
-                TonneauMesh.transform.eulerAngles += new Vector3(0, 90, 0);
-            }
-            if(animationLadder < 60)
-            {
-                transform.position -= new Vector3(0, 0.01f, 0);
-                animationLadder += 1;
-            }
-            else
-            {
-                TonneauMesh.transform.eulerAngles -= new Vector3(0, 90, 0);
-                isOnLadder = false;
+                if (animationLadder == 0)
+                {
+                    transform.eulerAngles += new Vector3(0, 5, 0);
+                    TonneauMesh.transform.eulerAngles += new Vector3(0, 90, 0);
+                }
+                if (animationLadder < 60)
+                {
+                    transform.position -= new Vector3(0, 0.01f, 0);
+                    animationLadder += 1;
+                }
+                else
+                {
+                    TonneauMesh.transform.eulerAngles -= new Vector3(0, 90, 0);
+                    isOnLadder = false;
+                }
             }
         }
-
     }
 
     void OnCollisionEnter(Collision collision)
@@ -95,7 +99,11 @@ public class TonneauController : MonoBehaviour
 
         if (collision.collider.gameObject.layer == LayerMask.NameToLayer("TonneauLadder"))
         {
-            isOnLadder = true;
+            randomLadder = Random.Range(0, 2);
+            if(randomLadder == 0)
+            {
+                isOnLadder = true;
+            }
         }
     }
 }

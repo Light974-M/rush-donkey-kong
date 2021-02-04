@@ -11,9 +11,14 @@ public class TonneauController : MonoBehaviour
 
     private float hauteurTonneau;
 
+    private int animationLadder = 0;
 
     private bool isHammerTakenOrigin = false;
     private static bool isHammerTaken = false;
+
+    private bool isOnLadder = false;
+
+    private int randomLadder;
 
     void Start()
     {
@@ -28,18 +33,20 @@ public class TonneauController : MonoBehaviour
     {
         hauteurTonneau = TonneauMesh.transform.position.y;
 
-        if(!Jump.deathAnimationStart)
+        if(!isOnLadder)
         {
-            if (isGoingLeft)
+            if (!Jump.deathAnimationStart)
             {
-                transform.eulerAngles += new Vector3(0, 1f, 0);
-            }
-            else
-            {
-                transform.eulerAngles -= new Vector3(0, 1f, 0);
+                if (isGoingLeft)
+                {
+                    transform.eulerAngles += new Vector3(0, 1f, 0);
+                }
+                else
+                {
+                    transform.eulerAngles -= new Vector3(0, 1f, 0);
+                }
             }
         }
-
         if(transform.position.y > hauteurTonneau)
         {
             isGoingLeft = false;
@@ -49,6 +56,27 @@ public class TonneauController : MonoBehaviour
             isGoingLeft = false;
         }
 
+        if(!Jump.deathAnimationStart)
+        {
+            if (isOnLadder)
+            {
+                if (animationLadder == 0)
+                {
+                    transform.eulerAngles += new Vector3(0, 5, 0);
+                    TonneauMesh.transform.eulerAngles += new Vector3(0, 90, 0);
+                }
+                if (animationLadder < 60)
+                {
+                    transform.position -= new Vector3(0, 0.01f, 0);
+                    animationLadder += 1;
+                }
+                else
+                {
+                    TonneauMesh.transform.eulerAngles -= new Vector3(0, 90, 0);
+                    isOnLadder = false;
+                }
+            }
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -66,6 +94,15 @@ public class TonneauController : MonoBehaviour
             if (!isHammerTaken)
             {
                 GameObject.Destroy(gameObject);
+            }
+        }
+
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("TonneauLadder"))
+        {
+            randomLadder = Random.Range(0, 2);
+            if(randomLadder == 0)
+            {
+                isOnLadder = true;
             }
         }
     }

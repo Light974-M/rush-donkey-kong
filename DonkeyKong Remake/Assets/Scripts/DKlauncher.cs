@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DKlauncher : MonoBehaviour
 {
-    public float time = 1;
+    public float time = 3;
 
     public Transform SpawnTonneau;
     public GameObject Tonneau;
@@ -25,7 +25,7 @@ public class DKlauncher : MonoBehaviour
 
             Vector3 position = new Vector3();
             Instantiate(Tonneau, SpawnTonneau.position, Quaternion.identity);
-            time = 1;
+            time = 3;
         }
     }
 }

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class DKlauncher : MonoBehaviour
 {
-    public float time = 3;
+    private float time = 2;
 
     public Transform SpawnTonneau;
     public GameObject Tonneau;
+
+    private int dkRandSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,8 @@ public class DKlauncher : MonoBehaviour
 
             Vector3 position = new Vector3();
             Instantiate(Tonneau, SpawnTonneau.position, Quaternion.identity);
-            time = 3;
+            dkRandSpeed = Random.Range(0, 2);
+            time = 2 +(4*dkRandSpeed);
         }
     }
 }

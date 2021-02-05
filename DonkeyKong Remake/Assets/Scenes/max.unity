@@ -7342,7 +7342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e58389bd6773d44982b91fb086959a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 3
   SpawnTonneau: {fileID: 1153347558}
   Tonneau: {fileID: 4616655188525738759, guid: d425becc59f8af34ab225aec23f0300a, type: 3}
 --- !u!1 &1905339359
@@ -7421,7 +7420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump: {x: 0, y: 0, z: 0}
-  jumpForce: 2.5
+  jumpForce: 4
   timer: 0
   isGrounded: 0
 --- !u!54 &1905339364

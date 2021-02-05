@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Jump : MonoBehaviour
 {
     public Vector3 jump;
-    public float jumpForce = 2.0f;
+    public float jumpForce = 4.0f;
     public static bool canUp = false;
     public static bool isHammerTaken = false;
     public static bool canPressUp = false;
@@ -39,6 +39,10 @@ public class Jump : MonoBehaviour
     {
         isGrounded = true;
     }
+    void OnCollisionExit()
+    {
+        isGrounded = false;
+    }
 
 
 
@@ -51,8 +55,10 @@ public class Jump : MonoBehaviour
 
         returnToNormal = HammerControler.returnToNormal;
 
-        if (Input.GetKey(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
+
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
 

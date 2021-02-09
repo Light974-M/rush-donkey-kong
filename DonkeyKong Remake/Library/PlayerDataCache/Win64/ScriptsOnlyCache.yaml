@@ -8,14 +8,22 @@ ScriptsOnlyBuild:
     - DKlauncher
     - DistanceToCenter
     - DonkeyKongController
+    - FallenController
     - HammerControler
     - Jump
+    - KeepTonneauController
     - MarioCapsuleController
     - NoLadderController
     - TargetDK
     - TonneauBehaviour
     - TonneauController
     - TopLadderController
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -51,8 +59,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
-    - Class: 90
-      Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
@@ -82,15 +88,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10762}
     - Class: 114
-      Script: {instanceID: 10834}
+      Script: {instanceID: 10788}
     - Class: 114
-      Script: {instanceID: 11040}
+      Script: {instanceID: 10836}
     - Class: 114
-      Script: {instanceID: 11156}
+      Script: {instanceID: 10854}
     - Class: 114
-      Script: {instanceID: 11218}
+      Script: {instanceID: 11044}
     - Class: 114
-      Script: {instanceID: 11318}
+      Script: {instanceID: 11160}
+    - Class: 114
+      Script: {instanceID: 11222}
+    - Class: 114
+      Script: {instanceID: 11322}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 136
@@ -118,7 +128,7 @@ ScriptsOnlyBuild:
     className: KillZone
   - hash:
       serializedVersion: 2
-      Hash: 470bb1b3010a22876da3e1907eefc92e
+      Hash: dbbafd98c5353b407f4787ee49ce1da1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TonneauController
@@ -346,7 +356,7 @@ ScriptsOnlyBuild:
     className: SetTonneauPivot
   - hash:
       serializedVersion: 2
-      Hash: 889df62ec21d3a8eb84ecddf6a9e186c
+      Hash: 5b564ca931d1f979f32660845c836aa8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Jump
@@ -454,6 +464,12 @@ ScriptsOnlyBuild:
     className: SignalReceiver
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: KeepTonneauController
+  - hash:
+      serializedVersion: 2
       Hash: 5ad4aa237d47ac2bab17bacb672edf7a
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -494,6 +510,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DistanceToCenter
+  - hash:
+      serializedVersion: 2
+      Hash: 29414604d16869332a571b8dc3bf9131
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FallenController
   - hash:
       serializedVersion: 2
       Hash: c1933cc0a2f4ff6eb13333347497beb3
@@ -689,4 +711,5 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/max.unity
-  playerPath: D:/projets/unity compiled/DonkeyKong Remake.exe
+  playerPath: D:/projets/unity compiled/donkey kong remake/DonkeyKong Remake_Data/DonkeyKong
+    Remake.exe

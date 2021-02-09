@@ -18,6 +18,8 @@ public class Jump : MonoBehaviour
     public int timer = 0;
     public static int life = 3;
 
+    public Transform marioFollower;
+
     public bool isGrounded;
     Rigidbody rb;
 
@@ -52,42 +54,46 @@ public class Jump : MonoBehaviour
 
     void Update()
     {
-
+        marioFollower.transform.position = new Vector3(transform.position.x, marioFollower.transform.position.y, transform.position.z);
         returnToNormal = HammerControler.returnToNormal;
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
 
-
-        if (canUp)
+        if(!deathAnimationStart)
         {
-            rb.useGravity = false;
+            if (canUp)
+            {
+                marioFollower.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePosition;
-                transform.position += new Vector3(0, 0.1f, 0);
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePosition;
-                transform.position += new Vector3(0, -0.1f, 0);
-            }
+                rb.useGravity = false;
 
-            if (!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePosition;
+                    transform.position += new Vector3(0, 0.05f, 0);
+                }
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePosition;
+                    transform.position += new Vector3(0, -0.05f, 0);
+                }
+
+                if (!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))
+                {
+                    GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+                }
+            }
+            else
             {
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+                rb.useGravity = true;
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             }
         }
-        else
-        {
-            rb.useGravity = true;
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-        }
+        
 
 
         if(canPressUp)
@@ -116,23 +122,6 @@ public class Jump : MonoBehaviour
         }
 
 
-        if(barriereGauche)
-        {
-            if(Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                barriereGauche = false;
-            }
-        }
-
-        if (barriereDroite)
-        {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                barriereDroite = false;
-            }
-        }
-
-
         if(deathAnimationStart)
         {
             Time.timeScale = 0;
@@ -150,11 +139,20 @@ public class Jump : MonoBehaviour
                 {
                     Debug.Log("game Over !");
                 }
-
+                canPressUp = false;
+                canUp = false;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
 
             
+        }
+
+        if(barriereDroite)
+        {
+            if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                barriereDroite = false;
+            }
         }
     }
 
@@ -206,10 +204,24 @@ public class Jump : MonoBehaviour
         {
             barriereGauche = true;
         }
+        else
+        {
+            barriereGauche = false;
+        }
 
         if (collision.collider.gameObject.layer == LayerMask.NameToLayer("BarriereDroite"))
         {
             barriereDroite = true;
+        }
+        else
+        {
+            barriereDroite = false;
+        }
+
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("victoire"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Debug.Log("victoire !");
         }
     }
 }

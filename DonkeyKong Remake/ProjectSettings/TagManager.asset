@@ -25,12 +25,12 @@ TagManager:
   - BarriereGauche
   - BarriereDroite
   - TonneauLadder
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Bas
+  - MarioFollower
+  - MarioTombe
+  - KeepTonneau
+  - KeepTonneauInit
+  - victoire
   - 
   - 
   - 

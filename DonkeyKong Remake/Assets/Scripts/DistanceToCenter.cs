@@ -19,9 +19,14 @@ public class DistanceToCenter : MonoBehaviour
 
         distance = Vector3.Distance(center.position, transform.position);
 
-        if (distance > 8)
+        if (distance > 8.5f)
         {
             transform.localPosition += new Vector3(0, 0, 0.1f);
+        }
+
+        if (distance < 8.4f)
+        {
+            transform.localPosition -= new Vector3(0, 0, 0.1f);
         }
 
 

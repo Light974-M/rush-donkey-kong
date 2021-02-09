@@ -62,8 +62,10 @@
      <Compile Include="Assets\Scripts\DistanceToCenter.cs" />
      <Compile Include="Assets\Scripts\DKlauncher.cs" />
      <Compile Include="Assets\Scripts\DonkeyKongController.cs" />
+     <Compile Include="Assets\Scripts\FallenController.cs" />
      <Compile Include="Assets\Scripts\HammerControler.cs" />
      <Compile Include="Assets\Scripts\Jump.cs" />
+     <Compile Include="Assets\Scripts\KeepTonneauController.cs" />
      <Compile Include="Assets\Scripts\MarioCapsuleController.cs" />
      <Compile Include="Assets\Scripts\NoLadderController.cs" />
      <Compile Include="Assets\Scripts\SetTonneauPivot.cs" />

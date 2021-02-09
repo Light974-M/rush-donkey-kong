@@ -18,12 +18,13 @@ public class TonneauController : MonoBehaviour
 
     private bool isOnLadder = false;
 
-    private int randomLadder;
+    public float tonneauSpeed;
 
     void Start()
     {
-        transform.position = new Vector3(0, 10, 0);
-        TonneauMesh.transform.position += new Vector3(0, 10, -8f);
+        transform.position = new Vector3(0, 13, 0);
+        TonneauMesh.transform.position += new Vector3(0, 13, -8f);
+        transform.eulerAngles += new Vector3(0, -65, 0);
 
         isHammerTakenOrigin = Jump.isHammerTaken;
         isHammerTaken = isHammerTakenOrigin;
@@ -33,17 +34,18 @@ public class TonneauController : MonoBehaviour
     {
         hauteurTonneau = TonneauMesh.transform.position.y;
 
-        if(!isOnLadder)
+
+        if (!isOnLadder)
         {
             if (!Jump.deathAnimationStart)
             {
                 if (isGoingLeft)
                 {
-                    transform.eulerAngles += new Vector3(0, 1f, 0);
+                    transform.eulerAngles += new Vector3(0, tonneauSpeed, 0);
                 }
                 else
                 {
-                    transform.eulerAngles -= new Vector3(0, 1f, 0);
+                    transform.eulerAngles -= new Vector3(0, tonneauSpeed, 0);
                 }
             }
         }
@@ -73,6 +75,7 @@ public class TonneauController : MonoBehaviour
                 else
                 {
                     TonneauMesh.transform.eulerAngles -= new Vector3(0, 90, 0);
+                    animationLadder = 0;
                     isOnLadder = false;
                 }
             }
@@ -99,11 +102,12 @@ public class TonneauController : MonoBehaviour
 
         if (collision.collider.gameObject.layer == LayerMask.NameToLayer("TonneauLadder"))
         {
-            randomLadder = Random.Range(0, 2);
-            if(randomLadder == 0)
-            {
-                isOnLadder = true;
-            }
+            isOnLadder = true;
+        }
+
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Bas"))
+        {
+            Destroy(gameObject);
         }
     }
 }

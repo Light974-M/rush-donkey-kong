@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5991328620141867608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.1316282e-14, y: 8.873431, z: -7.54}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.59503365, y: 0.59503365, z: 0.59503365}
   m_Children:
   - {fileID: 901291012524589392}
   m_Father: {fileID: 0}
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TonneauMesh: {fileID: 901291012524589392}
+  tonneauSpeed: 0.5
 --- !u!1 &6863646524351365266
 GameObject:
   m_ObjectHideFlags: 0

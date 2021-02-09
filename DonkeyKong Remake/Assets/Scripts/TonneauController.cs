@@ -11,12 +11,9 @@ public class TonneauController : MonoBehaviour
 
     private float hauteurTonneau;
 
-    private int animationLadder = 0;
 
     private bool isHammerTakenOrigin = false;
     private static bool isHammerTaken = false;
-
-    private bool isOnLadder = false;
 
     void Start()
     {
@@ -31,20 +28,18 @@ public class TonneauController : MonoBehaviour
     {
         hauteurTonneau = TonneauMesh.transform.position.y;
 
-        if(!isOnLadder)
+        if(!Jump.deathAnimationStart)
         {
-            if (!Jump.deathAnimationStart)
+            if (isGoingLeft)
             {
-                if (isGoingLeft)
-                {
-                    transform.eulerAngles += new Vector3(0, 1f, 0);
-                }
-                else
-                {
-                    transform.eulerAngles -= new Vector3(0, 1f, 0);
-                }
+                transform.eulerAngles += new Vector3(0, 1f, 0);
+            }
+            else
+            {
+                transform.eulerAngles -= new Vector3(0, 1f, 0);
             }
         }
+
         if(transform.position.y > hauteurTonneau)
         {
             isGoingLeft = false;
@@ -52,25 +47,6 @@ public class TonneauController : MonoBehaviour
         else if(transform.position.y < hauteurTonneau)
         {
             isGoingLeft = false;
-        }
-
-        if(isOnLadder)
-        {
-            if(animationLadder == 0)
-            {
-                transform.eulerAngles += new Vector3(0, 5, 0);
-                TonneauMesh.transform.eulerAngles += new Vector3(0, 90, 0);
-            }
-            if(animationLadder < 60)
-            {
-                transform.position -= new Vector3(0, 0.01f, 0);
-                animationLadder += 1;
-            }
-            else
-            {
-                TonneauMesh.transform.eulerAngles -= new Vector3(0, 90, 0);
-                isOnLadder = false;
-            }
         }
 
     }
@@ -91,11 +67,6 @@ public class TonneauController : MonoBehaviour
             {
                 GameObject.Destroy(gameObject);
             }
-        }
-
-        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("TonneauLadder"))
-        {
-            isOnLadder = true;
         }
     }
 }

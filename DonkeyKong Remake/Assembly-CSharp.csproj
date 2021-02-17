@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\CameraControls.cs" />
      <Compile Include="Assets\Scripts\CameraLock.cs" />
      <Compile Include="Assets\Scripts\CenterToCenter.cs" />
+     <Compile Include="Assets\Scripts\CoinController.cs" />
      <Compile Include="Assets\Scripts\DistanceToCenter.cs" />
      <Compile Include="Assets\Scripts\DKlauncher.cs" />
      <Compile Include="Assets\Scripts\DonkeyKongController.cs" />
@@ -69,7 +70,9 @@
      <Compile Include="Assets\Scripts\MarioCapsuleController.cs" />
      <Compile Include="Assets\Scripts\NoLadderController.cs" />
      <Compile Include="Assets\Scripts\SetTonneauPivot.cs" />
+     <Compile Include="Assets\Scripts\SoundController.cs" />
      <Compile Include="Assets\Scripts\TargetDK.cs" />
+     <Compile Include="Assets\Scripts\TextController.cs" />
      <Compile Include="Assets\Scripts\TonneauBehaviour.cs" />
      <Compile Include="Assets\Scripts\TonneauController.cs" />
      <Compile Include="Assets\Scripts\TopLadderController.cs" />
@@ -85,6 +88,24 @@
      <Compile Include="Assets\Trucs\ObstacleCoursePack\Scripts\Rotator.cs" />
      <Compile Include="Assets\Trucs\ObstacleCoursePack\Scripts\SavePos.cs" />
      <Compile Include="Assets\Trucs\ObstacleCoursePack\Scripts\WallMovable.cs" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/projets/github projets/donkey kong remake/rush-donkey-kong/DonkeyKong Remake/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

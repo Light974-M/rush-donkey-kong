@@ -29,6 +29,8 @@ public class Jump : MonoBehaviour
         Time.timeScale = 1;
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
     }
 
 
@@ -54,6 +56,7 @@ public class Jump : MonoBehaviour
 
     void Update()
     {
+
         marioFollower.transform.position = new Vector3(transform.position.x, marioFollower.transform.position.y, transform.position.z);
         returnToNormal = HammerControler.returnToNormal;
 

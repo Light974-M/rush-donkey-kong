@@ -15,7 +15,7 @@ public class CoinController : MonoBehaviour
     void Start()
     {
         getCoin = GetCoin.GetComponent<AudioSource>();
-        //capsuleCollider.isTrigger = true;
+        capsuleCollider.isTrigger = true;
     }
 
     void Update()
@@ -23,20 +23,9 @@ public class CoinController : MonoBehaviour
 
     }
 
-
-    void OnCollisionEnter(Collision collision)
-    {
-        
-        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Mario"))
-        {
-            getCoin.Play();
-            GameObject.Destroy(Pivot);
-        }
-    }
-
-   /* void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         getCoin.Play();
         GameObject.Destroy(Pivot);
-    }*/
+    }
 }
